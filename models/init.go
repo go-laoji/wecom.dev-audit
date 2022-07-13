@@ -37,10 +37,10 @@ func init() {
 		logger.Surgar.Error(err)
 		os.Exit(1)
 	}
-	OrmEngine.AutoMigrate(&RsaKey{})
+	OrmEngine.AutoMigrate(&RsaKey{}, &MsgSeq{})
 	switch os.Getenv("StoreType") {
 	case "1", "3":
-		OrmEngine.AutoMigrate(&ChatMsg{}, &MsgAttachments{}, &MsgSeq{})
+		OrmEngine.AutoMigrate(&ChatMsg{}, &MsgAttachments{})
 		break
 	}
 }
