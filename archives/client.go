@@ -108,7 +108,11 @@ func (c *client) fetchAndStore() (err error) {
 			break
 		}
 		lo.ForEach(chatData.ChatData, func(item ChatData, i int) {
-			decryptKey, err := internal.RsaDecrypt(corpKeys[item.PublicKeyVer], item.EncryptRandomKey)
+			key, ok := corpKeys[item.PublicKeyVer]
+			if !ok {
+				return
+			}
+			decryptKey, err := internal.RsaDecrypt(key, item.EncryptRandomKey)
 			if err != nil {
 				logger.Surgar.Error("解密串出错", err)
 			} else {
