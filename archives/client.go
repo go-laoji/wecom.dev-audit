@@ -13,17 +13,16 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"os"
-	"sync"
-	"unsafe"
-	"wecom.dev/audit/queue"
-
 	"github.com/jinzhu/copier"
 	"github.com/samber/lo"
 	"gorm.io/datatypes"
+	"os"
+	"sync"
+	"unsafe"
 	"wecom.dev/audit/archives/internal"
 	"wecom.dev/audit/logger"
 	"wecom.dev/audit/models"
+	"wecom.dev/audit/queue"
 	"wecom.dev/audit/storage"
 )
 
